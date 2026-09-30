@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Letter Studio</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="editor-header">
+    <h1>💌 Digital Letter Studio</h1>
+    <p>Create a beautiful decorated letter</p>
+</header>
+
+
+<div class="editor">
+
+    <!-- ============================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+        <h2>Decorations</h2>
+
+        <p>Drag a decoration onto your letter.</p>
+
+        <div class="decoration-grid">
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="babybreath">
+                <img src="{{ url_for('static', filename='decorations/babybreath.png') }}">
+                <span>Baby Breath</span>
+            </div>
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="fern">
+                <img src="{{ url_for('static', filename='decorations/fern.png') }}">
+                <span>Fern</span>
+            </div>
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="heartpin">
+                <img src="{{ url_for('static', filename='decorations/heartpin.png') }}">
+                <span>Heart Pin</span>
+            </div>
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="lavender">
+                <img src="{{ url_for('static', filename='decorations/lavender.png') }}">
+                <span>Lavender</span>
+            </div>
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="redribbon">
+                <img src="{{ url_for('static', filename='decorations/redribbon.png') }}">
+                <span>Red Ribbon</span>
+            </div>
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="rose">
+                <img src="{{ url_for('static', filename='decorations/rose.png') }}">
+                <span>Rose</span>
+            </div>
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="sparkle">
+                <img src="{{ url_for('static', filename='decorations/sparkle.png') }}">
+                <span>Sparkle</span>
+            </div>
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="standalone">
+                <img src="{{ url_for('static', filename='decorations/standalone.png') }}">
+                <span>Floral</span>
+            </div>
+
+            <div class="decoration"
+                 draggable="true"
+                 data-decoration="whiteribbon">
+                <img src="{{ url_for('static', filename='decorations/whiteribbon.png') }}">
+                <span>White Ribbon</span>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ============================= -->
+    <!-- WORKSPACE -->
+    <!-- ============================= -->
+
+    <main class="workspace">
+
+    <div class="letter">
+
+        <img
+            class="paper-background"
+            src="{{ url_for('static', filename='images/paper.png') }}"
+            alt=""
+        >
+
+        <div class="placed-decorations"></div>
+
+            <div class="letter-content">
+
+                <h2>Write Your Letter 💌</h2>
+
+                <input
+                    type="text"
+                    placeholder="Your name"
+                >
+
+                <input
+                    type="text"
+                    placeholder="Recipient's name"
+                >
+
+                <textarea
+                    placeholder="Write your message here..."
+                ></textarea>
+
+                <div class="letter-footer">
+
+                    <input
+                        type="text"
+                        placeholder="Your signature"
+                    >
+
+                </div>
+
+
+                <label for="fontStyle">
+                    Choose Font:
+                </label>
+
+                <select id="fontStyle">
+
+                    <option value="Georgia">
+                        Classic
+                    </option>
+
+                    <option value="'Comic Sans MS', cursive">
+                        Handwritten
+                    </option>
+
+                    <option value="Arial, sans-serif">
+                        Casual
+                    </option>
+
+                    <option value="'Courier New', monospace">
+                        Typewriter
+                    </option>
+
+                    <option value="'Brush Script MT', cursive">
+                        Elegant
+                    </option>
+
+                </select>
+
+
+                <button
+                    id="createLetterButton"
+                    class="create-button"
+                    type="button"
+                >
+                    💌 Create Letter
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ================================= -->
+<!-- ENVELOPE SCREEN -->
+<!-- ================================= -->
+
+<div id="envelopeScreen" class="envelope-screen">
+
+    <div
+        class="envelope-recipient"
+        id="envelopeRecipient"
+    >
+        For You 💌
+    </div>
+
+
+    <div class="envelope-stage">
+
+        <!-- ENVELOPE -->
+
+        <img
+            id="envelopeImage"
+            class="real-envelope"
+            src="{{ url_for('static', filename='images/envelope.png') }}"
+            alt="Beautiful envelope"
+        >
+
+
+        <!-- LETTER THAT COMES OUT -->
+
+        <div
+            class="opening-letter"
+            id="openingLetter"
+        >
+
+            <div class="parchment-letter">
+
+                <div class="parchment-border">
+
+                    <h2 id="previewTitle">
+                        A Letter For You
+                    </h2>
+
+                    <div class="little-heart">
+                        ♥
+                    </div>
+
+                    <p
+                        class="preview-from"
+                        id="previewFrom"
+                    ></p>
+
+                    <p
+                        class="preview-to"
+                        id="previewTo"
+                    ></p>
+
+                    <div
+                        class="preview-message"
+                        id="previewMessage"
+                    ></div>
+
+                    <div
+                        class="preview-signature"
+                        id="previewSignature"
+                    ></div>
+
+                    <div
+                        class="preview-decorations"
+                        id="previewDecorations"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="openLetterButton"
+        class="open-letter-button"
+        type="button"
+    >
+        💌 Open Letter
+    </button>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='create_letter.js') }}"></script>
+
+</body>
+</html>
